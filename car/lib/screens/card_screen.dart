@@ -2,8 +2,9 @@
 
 import 'dart:math';
 
+import 'package:car/animation/delayed_animation.dart';
 import 'package:car/model/design/design_system.dart';
-import 'package:car/share/components.dart';
+import 'package:car/share/components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:unicons/unicons.dart';
@@ -18,17 +19,26 @@ class CardPage extends StatefulWidget {
   int? carPrice;
   String? carRating;
   bool? isRotated;
+  String? localisation;
+  String? adress;
+  int? viewCount;
+  int? phoneNum;
 
-  CardPage(
-      {this.carImage,
-      this.carClass,
-      this.carName,
-      this.carPower,
-      this.people,
-      this.bags,
-      this.carPrice,
-      this.carRating,
-      this.isRotated});
+  CardPage({
+    this.carImage,
+    this.carClass,
+    this.carName,
+    this.carPower,
+    this.people,
+    this.bags,
+    this.carPrice,
+    this.carRating,
+    this.isRotated,
+    this.localisation,
+    this.adress,
+    this.viewCount,
+    this.phoneNum,
+  });
 
   @override
   State<CardPage> createState() => _CardPageState();
@@ -42,7 +52,9 @@ class _CardPageState extends State<CardPage> {
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: true,
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 237, 241, 243),
+
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(40.0), //appbar size
         child: AppBar(
@@ -52,7 +64,8 @@ class _CardPageState extends State<CardPage> {
           titleSpacing: 0,
           leadingWidth: size.width * 0.15,
           centerTitle: true,
-          backgroundColor: Colors.white,
+          // backgroundColor: Colors.white,
+          backgroundColor: Color.fromARGB(255, 237, 241, 243),
           leading: Padding(
             padding: EdgeInsets.only(
               left: size.width * 0.05,
@@ -75,7 +88,7 @@ class _CardPageState extends State<CardPage> {
                     borderRadius: const BorderRadius.all(Radius.circular(10)),
                   ),
                   child: Icon(
-                    UniconsLine.multiply,
+                    UniconsLine.arrow_circle_left,
                     color: themeData.secondaryHeaderColor,
                     size: size.height * 0.025,
                   ),
@@ -85,30 +98,36 @@ class _CardPageState extends State<CardPage> {
           ),
         ),
       ),
-      body: Center(
-        // child: Container(
-        //   height: size.height,
-        //   width: size.height,
-        //   decoration: BoxDecoration(
-        //     color: Colors.white,
-        //   ),
-        child: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: size.width * 0.05,
-            ),
-            child: Stack(
-              children: [
-                ListView(
-                  children: [
-                    widget.isRotated!
-                        ? Image.asset(
+      body:
+          // Center(
+          // child: Container(
+          //   height: size.height,
+          //   width: size.height,
+          //   decoration: BoxDecoration(
+          //     color: Colors.white,
+          //   ),
+          SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: size.width * 0.05,
+          ),
+          child: Stack(
+            children: [
+              ListView(
+                children: [
+                  widget.isRotated!
+                      ? DelayedAnimation(
+                          delay: 800,
+                          child: Image.asset(
                             widget.carImage!,
                             height: size.width * 0.5,
                             width: size.width * 0.8,
                             fit: BoxFit.contain,
-                          )
-                        : Transform(
+                          ),
+                        )
+                      : DelayedAnimation(
+                          delay: 800,
+                          child: Transform(
                             alignment: Alignment.center,
                             transform: Matrix4.rotationY(pi),
                             child: Image.asset(
@@ -118,300 +137,161 @@ class _CardPageState extends State<CardPage> {
                               fit: BoxFit.contain,
                             ),
                           ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          widget.carName!,
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            color: DesignSystem.container,
-                            letterSpacing: 0.7,
-                            fontSize: size.width * 0.06,
-                            fontWeight: FontWeight.w600,
-                          ),
                         ),
-                        const Spacer(),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.star,
-                              color: Colors.yellow[800],
-                              size: size.width * 0.04,
-                            ),
-                            SizedBox(width: 3),
-                            Text(
-                              widget.carRating!,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.yellow[800],
-                                fontSize: size.width * 0.03,
-                                letterSpacing: 0.7,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          widget.carClass!,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: DesignSystem.container2,
-                            fontSize: size.width * 0.05,
-                            letterSpacing: 0.7,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        const Spacer(),
-                        Text(
-                          '${widget.carPrice} \XA',
-                          style: TextStyle(
-                            color: DesignSystem.buttonColor,
-                            fontSize: size.width * 0.04,
-                            letterSpacing: 0.7,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          '/Jour',
-                          style: TextStyle(
-                            color: DesignSystem.container,
-                            letterSpacing: 0.7,
-                            fontSize: size.width * 0.025,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: size.height * 0.02,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          buildStat(
-                            UniconsLine.dashboard,
-                            '${widget.carPower} KM',
-                            'Power',
-                            size,
-                            themeData,
-                          ),
-                          buildStat(
-                            UniconsLine.users_alt,
-                            'Places',
-                            '( ${widget.people} )',
-                            size,
-                            themeData,
-                          ),
-                          buildStat(
-                            UniconsLine.briefcase,
-                            'Bagages',
-                            '( ${widget.bags} )',
-                            size,
-                            themeData,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: size.height * 0.03,
-                      ),
-                      child: Text(
-                        'Details',
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        widget.carName!,
+                        textAlign: TextAlign.left,
                         style: TextStyle(
                           color: DesignSystem.container,
                           letterSpacing: 0.7,
-                          fontSize: size.width * 0.043,
+                          fontSize: size.width * 0.06,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                    ),
-                    Row(
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: size.width * 0.05,
-                                vertical: size.height * 0.015,
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Icon(
-                                    UniconsLine.map_marker,
-                                    color: DesignSystem.buttonColor,
-                                    size: size.height * 0.03,
-                                  ),
-                                  Text(
-                                    'Localisation',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: DesignSystem.buttonColor,
-                                      letterSpacing: 0.7,
-                                      fontSize: size.width * 0.03,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Text(
-                                    'Rond Point Ngeng Ayong',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: DesignSystem.container,
-                                      fontSize: size.width * 0.04,
-                                      letterSpacing: 0.7,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                  Text(
-                                    'Pres de la Pharmacie ',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: DesignSystem.container2,
-                                      fontSize: size.width * 0.033,
-                                      letterSpacing: 0.7,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                      const Spacer(),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.star,
+                            color: Colors.yellow[800],
+                            size: size.width * 0.04,
+                          ),
+                          SizedBox(width: 3),
+                          Text(
+                            widget.carRating!,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.yellow[800],
+                              fontSize: size.width * 0.03,
+                              letterSpacing: 0.7,
+                              fontWeight: FontWeight.bold,
                             ),
-                          ],
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        widget.carClass!,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: DesignSystem.container2,
+                          fontSize: size.width * 0.05,
+                          letterSpacing: 0.7,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      const Spacer(),
+                      Text(
+                        '${widget.carPrice} \XA',
+                        style: TextStyle(
+                          color: DesignSystem.buttonColor,
+                          fontSize: size.width * 0.04,
+                          letterSpacing: 0.7,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        '/Jour',
+                        style: TextStyle(
+                          color: DesignSystem.container,
+                          letterSpacing: 0.7,
+                          fontSize: size.width * 0.025,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 9),
+                    child: Text(
+                      'Spesifications',
+                      style: TextStyle(
+                        color: DesignSystem.container,
+                        letterSpacing: 0.7,
+                        fontSize: size.width * 0.04,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: size.height * 0.02,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        buildStatCar(
+                          UniconsLine.dashboard,
+                          'Power',
+                          '${widget.carPower} KM',
+                          size,
+                          themeData,
+                        ),
+                        buildStatCar(
+                          UniconsLine.users_alt,
+                          'Places',
+                          '( ${widget.people} )',
+                          size,
+                          themeData,
+                        ),
+                        buildStatCar(
+                          UniconsLine.briefcase,
+                          'Bagages',
+                          '( ${widget.bags} )',
+                          size,
+                          themeData,
                         ),
                       ],
                     ),
-                    Row(
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 9),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: size.width * 0.05,
-                                vertical: size.height * 0.015,
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Icon(
-                                    UniconsLine.google,
-                                    color: DesignSystem.buttonColor,
-                                    size: size.height * 0.03,
-                                  ),
-                                  Text(
-                                    'Reserver',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: DesignSystem.buttonColor,
-                                      letterSpacing: 0.7,
-                                      fontSize: size.width * 0.03,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Text(
-                                    'Adresse Mail',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: DesignSystem.container,
-                                      letterSpacing: 0.7,
-                                      fontSize: size.width * 0.04,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                  Text(
-                                    'Reserver par mail  ',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: DesignSystem.container2,
-                                      fontSize: size.width * 0.033,
-                                      letterSpacing: 0.7,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
+                        buildInfoCar(
+                          UniconsLine.map_marker,
+                          'Localisation',
+                          '${widget.localisation} ',
+                          size,
+                          themeData,
+                        ),
+                        buildInfoCar(
+                          UniconsLine.phone_times,
+                          'Adresse',
+                          ' ${widget.adress} ',
+                          size,
+                          themeData,
+                        ),
+                        buildInfoCar(
+                          UniconsLine.message,
+                          'Reserver',
+                          ' ${widget.viewCount} ',
+                          size,
+                          themeData,
                         ),
                       ],
                     ),
-                    Row(
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: size.width * 0.05,
-                                vertical: size.height * 0.015,
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Icon(
-                                    UniconsLine.whatsapp_alt,
-                                    color: DesignSystem.buttonColor,
-                                    size: size.height * 0.03,
-                                  ),
-                                  Text(
-                                    'Appeler',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: DesignSystem.buttonColor,
-                                      letterSpacing: 0.7,
-                                      fontSize: size.width * 0.03,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Text(
-                                    'Disponible 24/24',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: DesignSystem.container,
-                                      fontSize: size.width * 0.04,
-                                      letterSpacing: 0.7,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                  Text(
-                                    'Whatsapp +241 66174502 ',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: DesignSystem.container2,
-                                      fontSize: size.width * 0.033,
-                                      letterSpacing: 0.7,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-                // buildSelectButton(size),
-              ],
-            ),
+                  ),
+                  buildMostRented(size, themeData),
+                ],
+              ),
+              // buildSelectButton(size),
+            ],
           ),
         ),
-        // ),
       ),
+      // ),
+      // ),
     );
   }
 }

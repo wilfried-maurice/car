@@ -1,5 +1,5 @@
 import 'package:car/model/design/design_system.dart';
-import 'package:car/share/components.dart';
+import 'package:car/share/components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:unicons/unicons.dart';
 

@@ -1,3 +1,4 @@
+import 'package:car/animation/delayed_animation.dart';
 import 'package:car/model/design/design_system.dart';
 import 'package:car/screens/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 237, 241, 243),
       body: SafeArea(
         child: Column(
           children: [
@@ -46,24 +48,27 @@ class Home extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(12.0),
-              child: SizedBox(
-                height: 450,
-                width: 400,
-                child: Container(
-                  decoration: const BoxDecoration(
-                    gradient: const LinearGradient(
-                      colors: [
-                        Color.fromARGB(106, 96, 125, 139),
-                        Color.fromARGB(255, 94, 119, 179),
-                      ],
+              child: DelayedAnimation(
+                delay: 950,
+                child: SizedBox(
+                  height: 450,
+                  width: 400,
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      gradient: const LinearGradient(
+                        colors: [
+                          Color.fromARGB(106, 96, 125, 139),
+                          Color.fromARGB(255, 94, 119, 179),
+                        ],
+                      ),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(17),
+                      ),
                     ),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(17),
+                    child: Image.asset(
+                      'assets/yaris_car.png',
+                      fit: BoxFit.contain,
                     ),
-                  ),
-                  child: Image.asset(
-                    'assets/yaris_car.png',
-                    fit: BoxFit.contain,
                   ),
                 ),
               ),
