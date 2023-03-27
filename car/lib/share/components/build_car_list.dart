@@ -169,56 +169,6 @@ class BuildCarList extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            Align(
-                              alignment: Alignment.topCenter,
-                              child: cars[index]['isRotated']
-                                  ? Image.asset(
-                                      cars[index]['carImage'],
-                                      height: 200,
-                                      width: 200,
-                                      fit: BoxFit.contain,
-                                    )
-                                  : Transform(
-                                      alignment: Alignment.center,
-                                      transform: Matrix4.rotationY(pi),
-                                      child: Image.asset(
-                                        cars[index]['carImage'],
-                                        height: 200,
-                                        width: 200,
-                                        fit: BoxFit.contain,
-                                      ),
-                                    ),
-                            ),
-                            // Padding(
-                            //   padding: EdgeInsets.symmetric(
-                            //     horizontal: 15,
-                            //   ),
-                            //   child: Text(
-                            //     cars[index]['carName'],
-                            //     textAlign: TextAlign.center,
-                            //     style: TextStyle(
-                            //       color: DesignSystem.container2,
-                            //       fontSize: 18,
-                            //       letterSpacing: 0.7,
-                            //       fontWeight: FontWeight.w600,
-                            //     ),
-                            //   ),
-                            // ),
-                            // Padding(
-                            //   padding: EdgeInsets.symmetric(
-                            //     horizontal: 15,
-                            //   ),
-                            //   child: Text(
-                            //     cars[index]['carClass'],
-                            //     textAlign: TextAlign.center,
-                            //     style: TextStyle(
-                            //       color: DesignSystem.container2,
-                            //       fontSize: 16,
-                            //       letterSpacing: 0.7,
-                            //       fontWeight: FontWeight.w500,
-                            //     ),
-                            //   ),
-                            // ),
                             Padding(
                               padding: EdgeInsets.symmetric(horizontal: 15),
                               child: Row(
@@ -268,6 +218,26 @@ class BuildCarList extends StatelessWidget {
                                   ),
                                 ],
                               ),
+                            ),
+                            Align(
+                              alignment: Alignment.topCenter,
+                              child: cars[index]['isRotated']
+                                  ? Image.asset(
+                                      cars[index]['carImage'],
+                                      height: 200,
+                                      width: 200,
+                                      fit: BoxFit.contain,
+                                    )
+                                  : Transform(
+                                      alignment: Alignment.center,
+                                      transform: Matrix4.rotationY(pi),
+                                      child: Image.asset(
+                                        cars[index]['carImage'],
+                                        height: 200,
+                                        width: 200,
+                                        fit: BoxFit.contain,
+                                      ),
+                                    ),
                             ),
                           ],
                         ),

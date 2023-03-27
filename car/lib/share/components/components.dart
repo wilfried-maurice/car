@@ -420,10 +420,15 @@ Padding buildMostRantedCard(int i, Size size, ThemeData themeData) {
               ),
               // color: Color.fromARGB(209, 255, 255, 255),
               borderRadius: const BorderRadius.all(
-                Radius.circular(
-                  20,
-                ),
+                Radius.circular(20),
               ),
+              // boxShadow: const <BoxShadow>[
+              //   BoxShadow(
+              //     color: Color.fromARGB(209, 255, 255, 255),
+              //     blurRadius: 1.0,
+              //     offset: Offset(0.0, 0.0),
+              //   )
+              // ],
             ),
             child: Padding(
               padding: EdgeInsets.only(
