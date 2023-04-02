@@ -22,7 +22,7 @@ class Home extends StatelessWidget {
                   Text(
                     'CONTINUER',
                     style: TextStyle(
-                      color: DesignSystem.buttonColor,
+                      color: DesignSystem.container,
                       letterSpacing: 0.7,
                       fontWeight: FontWeight.w700,
                     ),
@@ -58,7 +58,7 @@ class Home extends StatelessWidget {
                       gradient: const LinearGradient(
                         colors: [
                           Color.fromARGB(106, 96, 125, 139),
-                          Color.fromARGB(255, 94, 119, 179),
+                          Color.fromARGB(255, 53, 60, 78),
                         ],
                       ),
                       borderRadius: BorderRadius.all(
@@ -117,7 +117,7 @@ class Home extends StatelessWidget {
                     width: 25.0,
                     child: Container(
                       decoration: const BoxDecoration(
-                        color: DesignSystem.buttonColor,
+                        color: DesignSystem.container,
                         borderRadius: BorderRadius.all(
                           Radius.circular(2),
                         ),
@@ -135,7 +135,7 @@ class Home extends StatelessWidget {
                     width: 25.0,
                     child: Container(
                       decoration: const BoxDecoration(
-                        color: DesignSystem.buttonColor,
+                        color: DesignSystem.container,
                         borderRadius: BorderRadius.all(
                           Radius.circular(2),
                         ),
@@ -153,7 +153,7 @@ class Home extends StatelessWidget {
                     width: 25.0,
                     child: Container(
                       decoration: const BoxDecoration(
-                        color: DesignSystem.buttonColor,
+                        color: DesignSystem.container,
                         borderRadius: BorderRadius.all(
                           Radius.circular(2),
                         ),
@@ -171,7 +171,7 @@ class Home extends StatelessWidget {
                     width: 25.0,
                     child: Container(
                       decoration: const BoxDecoration(
-                        color: DesignSystem.buttonColor,
+                        color: DesignSystem.container,
                         borderRadius: BorderRadius.all(
                           Radius.circular(2),
                         ),
@@ -189,7 +189,7 @@ class Home extends StatelessWidget {
                     width: 25.0,
                     child: Container(
                       decoration: const BoxDecoration(
-                        color: DesignSystem.buttonColor,
+                        color: DesignSystem.container2,
                         borderRadius: BorderRadius.all(
                           Radius.circular(2),
                         ),
@@ -212,6 +212,15 @@ class Home extends StatelessWidget {
                   height: 50,
                   width: 160,
                   child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          fullscreenDialog: true,
+                          builder: (context) => HomePage(),
+                        ),
+                      );
+                    },
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
@@ -224,7 +233,7 @@ class Home extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
-                            color: DesignSystem.buttonColor,
+                            color: DesignSystem.container,
                           ),
                         ),
                       ),
@@ -235,13 +244,14 @@ class Home extends StatelessWidget {
                   height: 50,
                   width: 160,
                   child: InkWell(
+                    onTap: () {},
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         gradient: const LinearGradient(
                           colors: [
-                            DesignSystem.buttonColor,
-                            DesignSystem.buttonColor,
+                            Colors.orange,
+                            Colors.orangeAccent,
                           ],
                         ),
                       ),

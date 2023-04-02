@@ -35,50 +35,28 @@ class BuildCarList extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              decoration: BoxDecoration(
-                // gradient: const LinearGradient(
-                //   colors: [
-                //     Color.fromARGB(172, 255, 255, 255),
-                //     Color.fromARGB(209, 255, 255, 255),
-                //   ],
-                // ),
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  color: Color.fromARGB(255, 250, 249, 249),
-                ),
-              ),
-              width: 350,
-              child: TextFormField(
-                keyboardType: TextInputType.text,
-                decoration: InputDecoration(
-                  labelStyle: TextStyle(
-                    letterSpacing: 0.5,
-                    color: Color(0xFF7E7E7E),
-                    fontSize: 10,
-                    fontWeight: FontWeight.w400,
-                  ),
-                  // labelText: 'Remise',
-                  hintText: 'Search here',
-                  filled: true,
-                  contentPadding: const EdgeInsets.symmetric(
-                    vertical: 15.0,
-                    horizontal: 10.0,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                    borderSide: const BorderSide(
-                      color: Color.fromARGB(255, 255, 255, 255),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+              child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(15)),
+                child: const TextField(
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.all(10),
+                    border: InputBorder.none,
+                    label: Text('Rechercher'),
+                    labelStyle: TextStyle(
+                      letterSpacing: 0.7,
+                      fontSize: 19,
+                      color: DesignSystem.container,
                     ),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                    borderSide: const BorderSide(
-                      color: Color.fromARGB(244, 240, 234, 234),
-                      width: 1.0,
+                    prefixIcon: Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                      child: Icon(
+                        UniconsLine.search_alt,
+                      ),
                     ),
                   ),
                 ),
@@ -104,8 +82,8 @@ class BuildCarList extends StatelessWidget {
                         decoration: BoxDecoration(
                           gradient: const LinearGradient(
                             colors: [
-                              Color.fromARGB(172, 255, 255, 255),
-                              Color.fromARGB(209, 255, 255, 255),
+                              Colors.black,
+                              Colors.black,
                             ],
                           ),
                           borderRadius: const BorderRadius.all(
@@ -126,32 +104,13 @@ class BuildCarList extends StatelessWidget {
                                     cars[index]['carName'],
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                      color: DesignSystem.container2,
-                                      fontSize: 18,
+                                      color: DesignSystem.titleColor,
+                                      fontSize: 17,
                                       letterSpacing: 0.7,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
                                 ),
-                                // SizedBox(
-                                //   height: 27.1,
-                                //   width: 27.1,
-                                //   child: Container(
-                                //     decoration: const BoxDecoration(
-                                //       color: DesignSystem.buttonColor,
-                                //       borderRadius: BorderRadius.all(
-                                //         Radius.circular(
-                                //           10,
-                                //         ),
-                                //       ),
-                                //     ),
-                                //     child: const Icon(
-                                //       UniconsLine.heart,
-                                //       color: Colors.white,
-                                //       size: 17,
-                                //     ),
-                                //   ),
-                                // ),
                               ],
                             ),
                             Padding(
@@ -162,8 +121,8 @@ class BuildCarList extends StatelessWidget {
                                 cars[index]['carClass'],
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  color: DesignSystem.container2,
-                                  fontSize: 16,
+                                  color: DesignSystem.titleColor,
+                                  fontSize: 15,
                                   letterSpacing: 0.7,
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -176,7 +135,7 @@ class BuildCarList extends StatelessWidget {
                                   Text(
                                     '${cars[index]['carPrice']} \XA',
                                     style: TextStyle(
-                                      color: DesignSystem.buttonColor,
+                                      color: Colors.orange,
                                       letterSpacing: 0.7,
                                       fontSize: 14,
                                       fontWeight: FontWeight.bold,
@@ -185,7 +144,7 @@ class BuildCarList extends StatelessWidget {
                                   Text(
                                     '/ Jour',
                                     style: TextStyle(
-                                      color: Colors.blueGrey,
+                                      color: DesignSystem.titleColor,
                                       fontSize: 12,
                                       letterSpacing: 0.7,
                                       fontWeight: FontWeight.w500,
@@ -197,21 +156,19 @@ class BuildCarList extends StatelessWidget {
                                       right: 15,
                                     ),
                                     child: SizedBox(
-                                      height: 27.1,
-                                      width: 27.1,
+                                      height: 26.1,
+                                      width: 26.1,
                                       child: Container(
                                         decoration: const BoxDecoration(
-                                          color: DesignSystem.buttonColor,
+                                          color: Colors.orange,
                                           borderRadius: BorderRadius.all(
-                                            Radius.circular(
-                                              10,
-                                            ),
+                                            Radius.circular(10),
                                           ),
                                         ),
                                         child: const Icon(
                                           UniconsLine.corner_down_left,
                                           color: Colors.white,
-                                          size: 17,
+                                          size: 16,
                                         ),
                                       ),
                                     ),

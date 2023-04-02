@@ -81,8 +81,8 @@ class _CardPageState extends State<CardPage> {
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
                       colors: [
-                        Color.fromARGB(106, 96, 125, 139),
-                        Color.fromARGB(255, 94, 119, 179),
+                        Colors.orange,
+                        Colors.orangeAccent,
                       ],
                     ),
                     borderRadius: const BorderRadius.all(Radius.circular(10)),
@@ -98,15 +98,7 @@ class _CardPageState extends State<CardPage> {
           ),
         ),
       ),
-      body:
-          // Center(
-          // child: Container(
-          //   height: size.height,
-          //   width: size.height,
-          //   decoration: BoxDecoration(
-          //     color: Colors.white,
-          //   ),
-          SafeArea(
+      body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: size.width * 0.05,
@@ -148,7 +140,7 @@ class _CardPageState extends State<CardPage> {
                         style: TextStyle(
                           color: DesignSystem.container,
                           letterSpacing: 0.7,
-                          fontSize: size.width * 0.06,
+                          fontSize: size.width * 0.05,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -159,7 +151,7 @@ class _CardPageState extends State<CardPage> {
                         children: [
                           Icon(
                             Icons.star,
-                            color: Colors.yellow[800],
+                            color: Colors.orange,
                             size: size.width * 0.04,
                           ),
                           SizedBox(width: 3),
@@ -167,7 +159,7 @@ class _CardPageState extends State<CardPage> {
                             widget.carRating!,
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              color: Colors.yellow[800],
+                              color: Colors.orange,
                               fontSize: size.width * 0.03,
                               letterSpacing: 0.7,
                               fontWeight: FontWeight.bold,
@@ -184,19 +176,28 @@ class _CardPageState extends State<CardPage> {
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: DesignSystem.container2,
-                          fontSize: size.width * 0.05,
+                          fontSize: size.width * 0.04,
                           letterSpacing: 0.7,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                       const Spacer(),
-                      Text(
-                        '${widget.carPrice} \XA',
-                        style: TextStyle(
-                          color: DesignSystem.buttonColor,
-                          fontSize: size.width * 0.04,
-                          letterSpacing: 0.7,
-                          fontWeight: FontWeight.bold,
+                      Container(
+                        width: 110,
+                        height: 30,
+                        decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius: BorderRadius.circular(4)),
+                        child: Center(
+                          child: Text(
+                            '${widget.carPrice} \XAF',
+                            style: TextStyle(
+                              color: DesignSystem.titleColor,
+                              fontSize: size.width * 0.04,
+                              letterSpacing: 0.7,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ),
                       ),
                       Text(

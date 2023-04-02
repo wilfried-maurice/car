@@ -96,7 +96,7 @@ Padding buildStatCar(IconData icon, String title, String desc, Size size,
                 children: [
                   Icon(
                     icon,
-                    color: DesignSystem.buttonColor,
+                    color: Colors.orange,
                     size: size.width * 0.06,
                   ),
                   Padding(
@@ -136,7 +136,7 @@ Padding buildInfoCar(IconData icon, String title, String desc, Size size,
     Padding(
       padding: EdgeInsets.symmetric(horizontal: size.width * 0.015),
       child: DelayedAnimation(
-        delay: 500,
+        delay: 700,
         child: SizedBox(
           height: size.width * 0.25,
           width: size.width * 0.27,
@@ -163,7 +163,7 @@ Padding buildInfoCar(IconData icon, String title, String desc, Size size,
                 children: [
                   Icon(
                     icon,
-                    color: DesignSystem.buttonColor,
+                    color: Colors.orange,
                     size: size.width * 0.06,
                   ),
                   Padding(
@@ -286,8 +286,9 @@ Row buildCategory(String text, size, ThemeData themeData) => Row(
               'Voir Tout',
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: DesignSystem.buttonColor,
+                color: DesignSystem.container1,
                 fontSize: size.width * 0.03,
+                letterSpacing: 0.7,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -298,9 +299,7 @@ Row buildCategory(String text, size, ThemeData themeData) => Row(
 
 // build item for top brands category (Hyndai, golf, ...)
 Padding buildBrandLogo(Widget image, Size size, ThemeData themeData) => Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: size.width * 0.03,
-      ),
+      padding: EdgeInsets.symmetric(horizontal: size.width * 0.03),
       child: SizedBox(
         height: size.width * 0.15,
         width: size.width * 0.15,
@@ -312,8 +311,8 @@ Padding buildBrandLogo(Widget image, Size size, ThemeData themeData) => Padding(
             decoration: BoxDecoration(
               gradient: const LinearGradient(
                 colors: [
-                  Color.fromARGB(172, 255, 255, 255),
-                  Color.fromARGB(209, 255, 255, 255),
+                  Colors.white,
+                  Colors.white,
                 ],
               ),
               borderRadius: BorderRadius.circular(10),
@@ -321,10 +320,6 @@ Padding buildBrandLogo(Widget image, Size size, ThemeData themeData) => Padding(
                 color: const Color.fromARGB(209, 255, 255, 255),
               ),
             ),
-            // decoration: BoxDecoration(
-            //   color: Color.fromARGB(209, 255, 255, 255),
-            //   borderRadius: const BorderRadius.all(Radius.circular(20)),
-            // ),
             child: Center(
               child: image,
             ),
@@ -382,16 +377,6 @@ Widget buildTopBrands(Size size, ThemeData themeData) => Column(
                 size,
                 themeData,
               ),
-              // buildBrandLogo(
-              //   Image.asset(
-              //     'assets/bmw_logo.png',
-              //     height: size.width * 0.10,
-              //     width: size.width * 0.10,
-              //     fit: BoxFit.fill,
-              //   ),
-              //   size,
-              //   themeData,
-              // ),
             ],
           ),
         ),
@@ -406,29 +391,22 @@ Padding buildMostRantedCard(int i, Size size, ThemeData themeData) {
     ),
     child: Center(
       child: DelayedAnimation(
-        delay: 400,
+        delay: 600,
         child: SizedBox(
           height: size.width * 0.55,
           width: size.width * 0.8,
           child: Container(
             decoration: BoxDecoration(
-              gradient: const LinearGradient(
+              gradient: LinearGradient(
                 colors: [
-                  Color.fromARGB(172, 255, 255, 255),
-                  Color.fromARGB(209, 255, 255, 255),
+                  Colors.black,
+                  Colors.black,
                 ],
               ),
               // color: Color.fromARGB(209, 255, 255, 255),
               borderRadius: const BorderRadius.all(
                 Radius.circular(20),
               ),
-              // boxShadow: const <BoxShadow>[
-              //   BoxShadow(
-              //     color: Color.fromARGB(209, 255, 255, 255),
-              //     blurRadius: 1.0,
-              //     offset: Offset(0.0, 0.0),
-              //   )
-              // ],
             ),
             child: Padding(
               padding: EdgeInsets.only(
@@ -488,7 +466,7 @@ Padding buildMostRantedCard(int i, Size size, ThemeData themeData) {
                         cars[i]['carName'],
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: DesignSystem.container,
+                          color: DesignSystem.titleColor,
                           fontSize: size.width * 0.04,
                           letterSpacing: 0.7,
                           fontWeight: FontWeight.w600,
@@ -499,7 +477,7 @@ Padding buildMostRantedCard(int i, Size size, ThemeData themeData) {
                       cars[i]['carClass'],
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: DesignSystem.container2,
+                        color: DesignSystem.titleColor,
                         fontSize: size.width * 0.04,
                         letterSpacing: 0.7,
                         fontWeight: FontWeight.w500,
@@ -510,7 +488,7 @@ Padding buildMostRantedCard(int i, Size size, ThemeData themeData) {
                         Text(
                           '${cars[i]['carPrice']} \XA',
                           style: TextStyle(
-                            color: DesignSystem.buttonColor,
+                            color: Colors.orange,
                             letterSpacing: 0.7,
                             fontSize: size.width * 0.03,
                             fontWeight: FontWeight.w600,
@@ -519,7 +497,7 @@ Padding buildMostRantedCard(int i, Size size, ThemeData themeData) {
                         Text(
                           '/ Jour',
                           style: TextStyle(
-                            color: Colors.blueGrey,
+                            color: DesignSystem.titleColor,
                             fontSize: size.width * 0.03,
                             letterSpacing: 0.7,
                             fontWeight: FontWeight.w500,
@@ -532,7 +510,7 @@ Padding buildMostRantedCard(int i, Size size, ThemeData themeData) {
                           ),
                           child: const Icon(
                             UniconsLine.favorite,
-                            color: DesignSystem.buttonColor,
+                            color: Colors.orange,
                           ),
                           // SizedBox(
                           //   height: size.width * 0.1,
